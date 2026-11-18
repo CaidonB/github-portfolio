@@ -200,27 +200,27 @@ Usage Guide:
 
 
 
-\### Application Interface
+### Application Interface
 
 
 
-!\[Application Interface](screenshots/Interface.png)
+![Application Interface](screenshots/Interface.png)
 
 
 
-\### AI Question Generation
+### AI Question Generation
 
 
 
-!\[AI Question Generation](screenshots/Question.png)
+![AI Question Generation](screenshots/Question.png)
 
 
 
-\### AI Feedback
+### AI Feedback
 
 
 
-!\[AI Feedback](screenshots/Feedback.png)
+![AI Feedback](screenshots/Feedback.png)
 
 Testing:
 
