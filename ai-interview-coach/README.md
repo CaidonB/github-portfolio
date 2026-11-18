@@ -196,11 +196,13 @@ Usage Guide:
 
 
 
-Screenshots:
+\## Screenshots
 
 
 
 \### Application Interface
+
+
 
 !\[Application Interface](screenshots/Interface.png)
 
@@ -208,15 +210,17 @@ Screenshots:
 
 \### AI Question Generation
 
+
+
 !\[AI Question Generation](screenshots/Question.png)
 
 
 
 \### AI Feedback
 
+
+
 !\[AI Feedback](screenshots/Feedback.png)
-
-
 
 Testing:
 
