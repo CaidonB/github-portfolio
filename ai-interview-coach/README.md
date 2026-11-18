@@ -200,7 +200,21 @@ Screenshots:
 
 
 
-Screenshots demonstrating the application's interface, question generation, and AI feedback will be added during final documentation.
+\### Application Interface
+
+!\[Application Interface](screenshots/Interface.png)
+
+
+
+\### AI Question Generation
+
+!\[AI Question Generation](screenshots/Question.png)
+
+
+
+\### AI Feedback
+
+!\[AI Feedback](screenshots/Feedback.png)
 
 
 
@@ -281,14 +295,4 @@ Conclusion:
 
 
 The AI Interview Coach demonstrates the use of AI-assisted software development to create a practical application for interview preparation. ChatGPT was used throughout the development process to assist with requirements analysis, software implementation, debugging, testing, and documentation.
-
-
-
-
-
-
-
-
-
-
 
