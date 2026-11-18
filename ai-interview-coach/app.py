@@ -41,9 +41,16 @@ def ask_ai(messages):
 
 	return None
 
+# Generate an interview question based on category and topic
+def generate_question(category, topic):
+    if topic.strip():
+        request = (
+            f"Generate one {category.lower()} interview question "
+            f"focused on {topic.strip()}."
+        )
+    else:
+        request = f"Generate one {category.lower()} interview question."
 
-# Generate an interview question based on the category
-def generate_question(category):
     messages = [
         {
             "role": "system",
@@ -51,12 +58,11 @@ def generate_question(category):
         },
         {
             "role": "user",
-            "content": f"Generate a {category.lower()} interview question."
+            "content": request
         }
     ]
 
     return ask_ai(messages)
-
 
 # Evaluate a user's interview answer
 def evaluate_answer(question, answer):
@@ -82,7 +88,6 @@ def evaluate_answer(question, answer):
 
     return ask_ai(messages)
 
-
 st.title("AI Interview Coach")
 st.write("Practice job interview questions and receive AI-generated feedback.")
 
@@ -92,6 +97,20 @@ category = st.selectbox(
     "Select an interview category:",
     ["General", "Behavioral", "Technical"]
 )
+
+# Allow users to specify an interview topic
+if category == "Technical":
+    topic = st.text_input(
+        "Enter a technical topic (optional):",
+        placeholder="Example: Python, databases, networking"
+    )
+elif category == "Behavioral":
+    topic = st.text_input(
+        "Enter a behavioral topic (optional):",
+        placeholder="Example: teamwork, leadership, communication"
+    )
+else:
+    topic = ""
 
 # Initialize session state
 if "question" not in st.session_state:
@@ -103,17 +122,19 @@ if "feedback" not in st.session_state:
 if "answer" not in st.session_state:
     st.session_state.answer = ""
 
-# Reset when the interview category changes
-if st.session_state.get("last_category") != category:
+# Reset when the interview category or topic changes
+if (st.session_state.get("last_category") != category or
+        st.session_state.get("last_topic") != topic):
     st.session_state.question = ""
     st.session_state.feedback = ""
     st.session_state.answer = ""
     st.session_state.last_category = category
+    st.session_state.last_topic = topic
 
 # Generate interview question
 if st.button("Generate Interview Question"):
     with st.spinner("Generating question..."):
-        question = generate_question(category)
+        question = generate_question(category, topic)
 
         if question:
             st.session_state.question = question
