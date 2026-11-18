@@ -23,8 +23,9 @@ This AI Interview Coach will provide these functionalities:
 3. Allow the user/client too input responses to the questions.
 4. The AI will analyze the submitted responses and provide feedback on the answers.
 5. AI will provide suggestions on improvement based on answers too questions.
-6. Allow the user to generate additional questions to continue practicing
+6. Allow the user to generate additional questions to continue practicings
 7. Display error messages when the inputs required are missing or the AI model is not available.
+8. Allow users to add optional topic for Technical and Behavioral interview questions.
 
 
 
