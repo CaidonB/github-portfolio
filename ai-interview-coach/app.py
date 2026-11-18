@@ -42,6 +42,47 @@ def ask_ai(messages):
 	return None
 
 
+# Generate an interview question based on the category
+def generate_question(category):
+    messages = [
+        {
+            "role": "system",
+            "content": "You are a job interviewer. Ask exactly one interview question without giving the answer."
+        },
+        {
+            "role": "user",
+            "content": f"Generate a {category.lower()} interview question."
+        }
+    ]
+
+    return ask_ai(messages)
+
+
+# Evaluate a user's interview answer
+def evaluate_answer(question, answer):
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are an interview coach. Evaluate the candidate's answer. "
+                "Provide brief feedback with three sections: Strengths, "
+                "Weaknesses, and Suggestions for Improvement. "
+                "Keep your feedback under 150 words. "
+                "Do not invent experiences or accomplishments for the candidate."
+            )
+        },
+        {
+            "role": "user",
+            "content": (
+                f"Interview Question: {question}\n\n"
+                f"Candidate Answer: {answer}"
+            )
+        }
+    ]
+
+    return ask_ai(messages)
+
+
 st.title("AI Interview Coach")
 st.write("Practice job interview questions and receive AI-generated feedback.")
 
@@ -72,16 +113,7 @@ if st.session_state.get("last_category") != category:
 # Generate interview question
 if st.button("Generate Interview Question"):
     with st.spinner("Generating question..."):
-        question = ask_ai([
-            {
-                "role": "system",
-                "content": "You are a job interviewer. Ask exactly one interview question without giving the answer."
-            },
-            {
-                "role": "user",
-                "content": f"Generate a {category.lower()} interview question."
-            }
-        ])
+        question = generate_question(category)
 
         if question:
             st.session_state.question = question
@@ -105,25 +137,10 @@ if st.session_state.question:
             st.warning("Please enter an answer before submitting.")
         else:
             with st.spinner("Evaluating your answer..."):
-                feedback = ask_ai([
-                    {
-                        "role": "system",
-                        "content": (
-                            "You are an interview coach. Evaluate the candidate's answer. "
-                            "Provide brief feedback with three sections: Strengths, "
-                            "Weaknesses, and Suggestions for Improvement. "
-                            "Keep your feedback under 150 words. "
-                            "Do not invent experiences or accomplishments for the candidate."
-                        )
-                    },
-                    {
-                        "role": "user",
-                        "content": (
-                            f"Interview Question: {st.session_state.question}\n\n"
-                            f"Candidate Answer: {st.session_state.answer}"
-                        )
-                    }
-                ])
+                feedback = evaluate_answer(
+                    st.session_state.question,
+                    st.session_state.answer
+                )
 
                 if feedback:
                     st.session_state.feedback = feedback
