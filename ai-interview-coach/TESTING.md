@@ -140,3 +140,155 @@ All documented tests passed.
 
 Additional testing will focus on handling unavailable AI models, improving error handling, and verifying the application's reliability before final submission.
 
+
+
+5\. Error Handling Testing
+
+
+
+The application was tested to verify that it correctly handles common errors involving user input and communication with the Ollama AI model.
+
+
+
+Test 4: Normal AI Operation
+
+
+
+Test Procedure:
+
+
+
+Generate an interview question.
+
+
+
+Enter a written answer.
+
+
+
+Submit the answer for evaluation.
+
+
+
+Expected Result: The application should generate a question and provide AI feedback without errors.
+
+
+
+Actual Result: The application successfully generated a question and evaluated the submitted answer.
+
+
+
+Status: PASS
+
+
+
+Test 5: Missing AI Model
+
+
+
+Test Procedure:
+
+
+
+Temporarily change the model name to nonexistent-model-test.
+
+
+
+Attempt to generate an interview question.
+
+
+
+Restore the correct model name.
+
+
+
+Expected Result: The application should display an error message explaining that the AI model could not be found.
+
+
+
+Actual Result: The application displayed the appropriate missing-model error message.
+
+
+
+Status: PASS
+
+
+
+Test 6: Ollama Connection Failure
+
+
+
+Test Procedure:
+
+
+
+Temporarily configure the Ollama client to connect to http://127.0.0.1:59999.
+
+
+
+Attempt to generate an interview question.
+
+
+
+Restore the original client configuration.
+
+
+
+Expected Result: The application should display an error explaining that it cannot connect to Ollama.
+
+
+
+Actual Result: The application displayed the appropriate connection error message.
+
+
+
+Status: PASS
+
+
+
+Test 7: Empty Answer Validation
+
+
+
+Test Procedure:
+
+
+
+Generate an interview question.
+
+
+
+Leave the answer field empty.
+
+
+
+Click Submit Answer.
+
+
+
+Expected Result: The application should request an answer rather than sending an empty response to the AI model.
+
+
+
+Actual Result: The application displayed the expected warning message.
+
+
+
+Status: PASS
+
+
+
+6\. Additional Testing Notes
+
+
+
+The application successfully handled the tested error scenarios without terminating unexpectedly.
+
+
+
+The Ollama model name and client connection settings were restored after testing.
+
+
+
+Request timeouts and empty responses from the AI model have error-handling code implemented, but these scenarios have not yet been directly tested.
+
